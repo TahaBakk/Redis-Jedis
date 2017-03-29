@@ -11,6 +11,14 @@ public class Llibre {
         this.autor = autor;
     }
 
+    public String toString() {
+        return "Llibre{" +
+                "idLlibre=" + idLlibre +
+                ", titol='" + titol + '\'' +
+                ", autor='" + autor + '\'' +
+                '}';
+    }
+
     public int getIdLlibre() {
         return idLlibre;
     }
