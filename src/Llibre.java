@@ -1,30 +1,19 @@
 
 public class Llibre {
 
-    private int idLlibre;
     private String titol;
     private String autor;
 
-    public Llibre(int idLlibre, String titol, String autor) {
-        this.idLlibre = idLlibre;
+    public Llibre(String titol, String autor) {
         this.titol = titol;
         this.autor = autor;
     }
 
     public String toString() {
         return "Llibre{" +
-                "idLlibre=" + idLlibre +
-                ", titol='" + titol + '\'' +
+                "titol='" + titol + '\'' +
                 ", autor='" + autor + '\'' +
                 '}';
-    }
-
-    public int getIdLlibre() {
-        return idLlibre;
-    }
-
-    public void setIdLlibre(int idLlibre) {
-        this.idLlibre = idLlibre;
     }
 
     public String getTitol() {

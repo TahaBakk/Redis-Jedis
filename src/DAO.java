@@ -6,30 +6,37 @@ import redis.clients.jedis.Jedis;
 public class DAO {
 //https://www.adictosaltrabajo.com/tutoriales/spring-redis/#05
 
+    Jedis jedis = new Jedis("172.31.73.162", 6379); // Conectar amb Redis server
 
 
-    public void crearLibro(Jedis jedis, Llibre llibre){
+    public void crearLibro(String titol, String autor){
 
+        Llibre llibre = new Llibre(titol, autor);
         String llibrePush = llibre.toString();
-        String llibrePush2 = llibre.toString();
-        //Para añadir un nuevo libro
 
-        System.out.println("Hacer un push: "+jedis.sadd("Llibre", new String[]{llibrePush,llibrePush2}));
+        Long key = jedis.incr("llibrekey");
+        jedis.sadd("Llibre"+key, new String[]{llibrePush});
 
-        //System.out.println("Hacer un push: "+jedis.lpush("Llibre","taha"));
+        System.out.println("Libro añadido");
+
+        jedis.close();
+    }
+
+    public void verLibro(String key){
+
+        System.out.println("Libro: "+jedis.spop(key));
+
+        jedis.close();
 
     }
 
-    public void verLibro(Jedis jedis, String key){
-        //le pasamos la clave y nos muestra los libros con esa clave
-        //System.out.println("Hacer un push: "+jedis.lpop(key));
-        System.out.println("Hacer un push: "+jedis.spop(key));
+    public void eliminarLibro(String key) {
 
-    }
-
-    public void eliminarLibro(Jedis jedis, String key) {
         jedis.del(key);
+
+        jedis.close();
     }
+
 
 
 
