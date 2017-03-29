@@ -6,6 +6,8 @@ import redis.clients.jedis.Jedis;
 public class DAO {
 //https://www.adictosaltrabajo.com/tutoriales/spring-redis/#05
 
+
+
     public void crearLibro(Jedis jedis, Llibre llibre){
 
         String llibrePush = llibre.toString();
