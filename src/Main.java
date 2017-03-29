@@ -4,7 +4,7 @@ public class Main {
 
     public static void main(String[] args) {
         // Conectar amb Redis server al localhost
-        Jedis jedis = new Jedis("localhost");
+        Jedis jedis = new Jedis("172.31.73.162", 6379);
         DAO dao = new DAO();
 
         System.out.println("Conectat al server correctament!");
@@ -12,6 +12,9 @@ public class Main {
         Llibre libro1 = new Llibre(1,"el perdio","taha");
 
         dao.crearLibro(jedis,libro1);
+
+
+
         jedis.close();
 
     }

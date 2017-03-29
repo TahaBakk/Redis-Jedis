@@ -11,19 +11,22 @@ public class DAO {
         String llibrePush = llibre.toString();
         String llibrePush2 = llibre.toString();
         //Para añadir un nuevo libro
+
+        System.out.println("Hacer un push: "+jedis.sadd("Llibre", new String[]{llibrePush,llibrePush2}));
+
         //System.out.println("Hacer un push: "+jedis.lpush("Llibre","taha"));
-        //System.out.println("Hacer un push: "+jedis.sadd("Llibre",llibrePush,llibrePush2));
 
     }
 
     public void verLibro(Jedis jedis, String key){
         //le pasamos la clave y nos muestra los libros con esa clave
-        System.out.println("Hacer un push: "+jedis.lpop(key));
+        //System.out.println("Hacer un push: "+jedis.lpop(key));
         System.out.println("Hacer un push: "+jedis.spop(key));
 
     }
 
     public void eliminarLibro(Jedis jedis, String key) {
+        jedis.del(key);
     }
 
 
